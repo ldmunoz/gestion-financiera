@@ -1,5 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators} from '@angular/forms';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'auth',
@@ -17,6 +18,7 @@ export class AuthComponent {
   formLogin: FormGroup;
 
   private readonly builder: FormBuilder = inject(FormBuilder);
+  private readonly router: Router = inject(Router);
 
   constructor() {
     this.formLogin = this.builder.group({
@@ -49,7 +51,7 @@ export class AuthComponent {
     }, 2000);
 
     if (this.getUserName?.value == "Shak323" && this.getPassword?.value == "3122021535David*") {
-      console.log("login completado correctamente ");
+      this.router.navigate(['/main']);
     }
   }
 
